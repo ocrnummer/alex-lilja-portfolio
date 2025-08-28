@@ -1,0 +1,43 @@
+.italic {
+    font-style: italic;
+}
+
+h2 {
+  padding-bottom: 1rem;
+}
+
+.title {
+    white-space: pre;
+    padding-bottom: 2rem;
+}
+
+.bio {
+  margin: 0;
+  white-space: pre;
+  max-width: 600px;
+  padding-bottom: 2rem;
+}
+
+.email-link {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.custom-divider {
+    height: 2px;
+    width: 100%;
+    background: #FFD8BB;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.exhibitionColumn {
+    margin-right: 1rem;
+}
+
+.exhibitionRow {
+  margin-bottom: 1rem;
+
+}
