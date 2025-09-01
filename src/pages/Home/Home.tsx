@@ -4,6 +4,7 @@ import { Query } from "appwrite"
 import type { IExhibition, IInformation } from "../../types"
 import { BIO, EMAIL, TITLE } from "../../utils/SharedConsts"
 import "./Home.css"
+import { insertLineBreaksAfterSentence, insertLineBreaksAfterWords } from "../../utils/InsertLinebreak"
 
 const Home = () => {
     const [information, setInformation] = useState<IInformation>({
@@ -12,6 +13,8 @@ const Home = () => {
         email: EMAIL,
     } as IInformation)
     const [exhibitions, setExhibitions] = useState<IExhibition[]>([])
+
+    const EXHIBITIONS_TITLE = "Exhibitions"
 
     useEffect(() => {
         init()
@@ -30,52 +33,40 @@ const Home = () => {
             console.error("No exhibitions document found")
             return;
         }
-        setInformation(informationResponse.documents[0])
+        const formattedInfo = {
+            ...informationResponse.documents[0],
+            bio: insertLineBreaksAfterSentence(informationResponse.documents[0].bio),
+            title: insertLineBreaksAfterWords(informationResponse.documents[0].title)
+        }
+        setInformation(formattedInfo)
         setExhibitions(exhibitionsResponse.documents)
     }
 
-    const tdStyle = {
-        fontStyle: "italic",
-    };
-
-    const trStyle = {
-        padding: '8px'
-    };
-
     return (
-        <>
-            <h1 className="title">{information.title}</h1>
-            <p className="bio">{information.bio}</p>
-            <a className="email-link" href={`mailto:${information.email}`}>{information.email}</a>
-            <div className="custom-divider"></div>
-            <h2>Exhibitions</h2>
-            <div>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                    <tbody>
-                    {exhibitions.map((exhibition, index) => (
-                        <tr style={trStyle} key={index}>
-                            <td>{exhibition.year}</td>
-                            <td style={tdStyle}>{exhibition.title}</td>
-                            <td>{exhibition.venue}</td>
-                            <td>{exhibition.city}</td>
-                            <td>{exhibition.type}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+        <> 
+            <div className="headerContainer">
+                <h1 className="title">{information.title}</h1>
+                <p className="bio">{information.bio}</p>
+                <a className="email-link" href={`mailto:${information.email}`}>{information.email}</a>
             </div>
-            {/* <div>
-                {exhibitions.map(
-                    (exhibition: IExhibition) => (
-                        <div key={exhibition.$id} className="exhibitionRow">
-                            <span className="exhibitionColumn">{exhibition.year}</span>  
-                            <span className="exhibitionColumn italic">{exhibition.name}</span>
-                            <span className="exhibitionColumn">{exhibition.venue}, {exhibition.city}</span>
-                            <span className="exhibitionColumn">{exhibition.type}</span>
-                        </div>
-                    )
-                )}
-            </div> */}
+            <div className="custom-divider"></div>
+            <div className="exhibitionsTableContainer">
+                <h2>{EXHIBITIONS_TITLE}</h2>
+                <div>
+                    <table className="table">
+                        <tbody>
+                        {exhibitions.map((exhibition, index) =>  (
+                            <tr key={index}>
+                                <td>{exhibition.year}</td>
+                                <td className="italic">{exhibition.name}</td>
+                                <td>{exhibition.venue}, {exhibition.city}</td>
+                                <td>{exhibition.type}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </>
     )
 }

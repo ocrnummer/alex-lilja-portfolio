@@ -1,14 +1,28 @@
-.italic {
-    font-style: italic;
+td {
+  padding-right: 2rem;
+}
+
+.table {
+  width: '100%';
+  border-collapse: collapse;  
+  border-spacing: 0 0.6rem;
 }
 
 h2 {
   padding-bottom: 1rem;
 }
 
+h1, h2, p, a, tr, td {
+    mix-blend-mode: difference;
+}
+
+.italic {
+  font-style: italic;
+}
+
 .title {
-    white-space: pre;
-    padding-bottom: 2rem;
+  white-space: pre;
+  padding-bottom: 2rem;
 }
 
 .bio {
@@ -26,18 +40,32 @@ h2 {
 }
 
 .custom-divider {
-    height: 2px;
-    width: 100%;
-    background: #FFD8BB;
-    position: relative;
-    margin-bottom: 2rem;
+  height: 2px;
+  width: 100%;
+  background: #FFD8BB;
+  position: relative;
+  margin-bottom: 2rem;
+  mix-blend-mode: difference;
 }
 
 .exhibitionColumn {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .exhibitionRow {
   margin-bottom: 1rem;
+}
 
+@media (max-width: 768px) {
+  .headerContainer {
+    padding-left: 0.3rem;
+  }
+
+  .exhibitionsTableContainer {
+    margin-left: 0.3rem;
+  }
+
+  .exhibitionRow {
+    margin-bottom: 1.3rem;
+  }
 }
