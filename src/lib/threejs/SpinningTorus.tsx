@@ -7,15 +7,15 @@ function SpinningTorus() {
 
   useFrame(() => {
     if (torusRef.current) {
-      torusRef.current.rotation.y += 0.0005;
-      torusRef.current.rotation.x += 0.0001;
+      torusRef.current.rotation.y += 0.0006;
+      torusRef.current.rotation.x += 0.0002;
     }
   });
 
   return (
     <mesh 
       ref={torusRef} 
-      position={[-200, 100, -1000]}
+      position={[-300, 100, -750]}
       rotation={[123, 0, 0]}
     >
       <torusGeometry args={[600, 200, 300, 200]} />

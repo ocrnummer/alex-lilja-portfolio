@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import db from "../../services/DatabaseService"
-import { Query } from "appwrite"
+// import db from "../../services/DatabaseService"
+// import { Query } from "appwrite"
 import type { IExhibition, IInformation } from "../../types"
 import { BIO, EMAIL, TITLE } from "../../utils/SharedConsts"
 import "./Home.css"
-import { insertLineBreaksAfterSentence, insertLineBreaksAfterWords } from "../../utils/InsertLinebreak"
+// import { insertLineBreaksAfterSentence, insertLineBreaksAfterWords } from "../../utils/InsertLinebreak"
+import { staticInformation, staticExhibitions } from "./staticData"
 
 const Home = () => {
     const [information, setInformation] = useState<IInformation>({
@@ -21,25 +22,24 @@ const Home = () => {
     }, [])
 
     const init = async () => { 
-        const informationResponse = await db.information.list()
-        const exhibitionsResponse = await db.exhibitions.list(
-            [Query.orderDesc('year')]
-        )
-        if (!informationResponse.documents[0]) {
-            console.error("No information document found")
-            return;
-        }
-        if (!exhibitionsResponse.documents) {
-            console.error("No exhibitions document found")
-            return;
-        }
-        const formattedInfo = {
-            ...informationResponse.documents[0],
-            bio: insertLineBreaksAfterSentence(informationResponse.documents[0].bio),
-            title: insertLineBreaksAfterWords(informationResponse.documents[0].title)
-        }
-        setInformation(formattedInfo)
-        setExhibitions(exhibitionsResponse.documents)
+        // const informationResponse = await db.information.list()
+        // const exhibitionsResponse = await db.exhibitions.list(
+        //     [Query.orderDesc('year')]
+        // )
+        // if (!informationResponse.documents[0]) {
+        //     console.error("No information document found")
+        //     return;
+        // }
+        // if (!exhibitionsResponse.documents) {
+        //     console.error("No exhibitions document found")
+        //     return;
+        // }
+        // const formattedInfo = {
+        //     ...informationResponse.documents[0],
+        //     bio: insertLineBreaksAfterSentence(informationResponse.documents[0].bio),
+        //     title: insertLineBreaksAfterWords(informationResponse.documents[0].title)
+        setInformation(staticInformation)
+        setExhibitions(staticExhibitions)
     }
 
     return (
