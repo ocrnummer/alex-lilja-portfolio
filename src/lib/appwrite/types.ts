@@ -1,5 +1,5 @@
 import type { Models } from "appwrite";
-import type { IInformation, IExhibitionn } from "../../types";
+import type { IInformation, IExhibition } from "../../types";
 
 /**
  * Payload types
@@ -20,8 +20,8 @@ export type InformationCollection = {
 }
 
 export type ExhibitionsCollectionn = {
-    get: (id: string) => Promise<IExhibitionn>;
-    list: (queries?: string[]) => Promise<Models.DocumentList<IExhibitionn>>;
+    get: (id: string) => Promise<IExhibition>;
+    list: (queries?: string[]) => Promise<Models.DocumentList<IExhibition>>;
 }
 
 /**
