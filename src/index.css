@@ -4,8 +4,8 @@
   font-weight: 400;
   font-size: 1.2rem;
 
-  color: #FFD8BB;
-  background-color: #0B1400;
+  color: #000000;
+  background-color: #FFFFFF;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,11 +14,11 @@
 }
 
 a {
-  color: #FFD8BB;
+  color: #000000;
   text-decoration: inherit;
 }
 a:hover {
-  color: #b59075;
+  color: #FAFAFA;
 }
 
 body {
