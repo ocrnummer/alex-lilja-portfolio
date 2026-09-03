@@ -42,7 +42,7 @@ h1, h2, p, a, tr, td {
 .custom-divider {
   height: 2px;
   width: 100%;
-  background: #FFD8BB;
+  background: #000000;
   position: relative;
   margin-bottom: 2rem;
   mix-blend-mode: difference;
