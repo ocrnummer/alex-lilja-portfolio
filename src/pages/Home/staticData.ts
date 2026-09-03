@@ -14,21 +14,6 @@ export const staticInformation: IInformation = {
 
 export const staticExhibitions: IExhibition[] = [
     {
-        "year": 2024,
-        "name": "Sommarsalong",
-        "venue": "Galleri Kaross",
-        "type": "group",
-        "city": "Växjö",
-        "$id": "68af043c0018a7f62f51",
-        "$sequence": 10,
-        "$createdAt": "2025-08-27T13:12:28.502+00:00",
-        "$updatedAt": "2025-08-27T13:12:28.502+00:00",
-        "$permissions": [],
-        "$databaseId": "68aee827000cd72e1062",
-        "$tableId": "exhibitions",
-        "$collectionId": "exhibitions"
-    },
-    {
         "year": 2013,
         "name": "Vårsalong",
         "venue": "Babettes Kafferi",
@@ -162,5 +147,20 @@ export const staticExhibitions: IExhibition[] = [
         "$databaseId": "68aee827000cd72e1062",
         "$tableId": "exhibitions",
         "$collectionId": "exhibitions"
-    }
+    },
+        {
+        "year": 2024,
+        "name": "Sommarsalong",
+        "venue": "Galleri Kaross",
+        "type": "group",
+        "city": "Växjö",
+        "$id": "68af043c0018a7f62f51",
+        "$sequence": 10,
+        "$createdAt": "2025-08-27T13:12:28.502+00:00",
+        "$updatedAt": "2025-08-27T13:12:28.502+00:00",
+        "$permissions": [],
+        "$databaseId": "68aee827000cd72e1062",
+        "$tableId": "exhibitions",
+        "$collectionId": "exhibitions"
+    },
 ]
