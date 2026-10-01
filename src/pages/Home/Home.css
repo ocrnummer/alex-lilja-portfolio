@@ -3,69 +3,59 @@ td {
 }
 
 .table {
-  width: '100%';
-  border-collapse: collapse;  
-  border-spacing: 0 0.6rem;
-}
-
-h2 {
-  padding-bottom: 1rem;
-}
-
-h1, h2, p, a, tr, td {
-    mix-blend-mode: difference;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .italic {
   font-style: italic;
 }
 
-.title {
-  white-space: pre;
-  padding-bottom: 2rem;
-}
-
 .bio {
   margin: 0;
-  white-space: pre;
+  white-space: pre-line;
   max-width: 600px;
   padding-bottom: 2rem;
 }
 
 .email-link {
   display: inline-block;
-  font-size: 1.4rem;
   font-style: italic;
   margin-bottom: 2rem;
-}
-
-.custom-divider {
-  height: 2px;
-  width: 100%;
-  background: #000000;
-  position: relative;
-  margin-bottom: 2rem;
-  mix-blend-mode: difference;
-}
-
-.exhibitionColumn {
-  margin-right: 1rem;
-}
-
-.exhibitionRow {
-  margin-bottom: 1rem;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 768px) {
-  .headerContainer {
-    padding-left: 0.3rem;
+  /*
+   * Each exhibition becomes a small two-line block with the year in its own column:
+   *   2024  Exhibition name
+   *         Venue, City · type
+   */
+  .table, .table tbody {
+    display: block;
   }
 
-  .exhibitionsTableContainer {
-    margin-left: 0.3rem;
+  .table tbody tr {
+    display: grid;
+    grid-template-columns: 3em auto 1fr;
+    grid-template-areas:
+      "year name  name"
+      "year venue type";
+    column-gap: 0.4rem;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
   }
 
-  .exhibitionRow {
-    margin-bottom: 1.3rem;
+  .table td {
+    padding-right: 0;
+  }
+
+  .table td:nth-child(1) { grid-area: year; }
+  .table td:nth-child(2) { grid-area: name; }
+  .table td:nth-child(3) { grid-area: venue; }
+  .table td:nth-child(4) { grid-area: type; }
+
+  .table td:nth-child(4)::before {
+    content: "· ";
   }
 }
