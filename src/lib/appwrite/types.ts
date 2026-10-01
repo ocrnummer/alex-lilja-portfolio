@@ -1,27 +1,23 @@
 import type { Models } from "appwrite";
-import type { IInformation, IExhibition } from "../../types";
-
-/**
- * Payload types
- */
-
-export type AdPayload = {
-    title: string,
-    body: string,
-}
+import type { Information, Exhibition, WorksInformation } from "../../types";
 
 /**
  * Collection types
  */
 
 export type InformationCollection = {
-    get: (id: string) => Promise<IInformation>;
-    list: (queries?: string[]) => Promise<Models.DocumentList<IInformation>>;
+    get: (id: string) => Promise<Information>;
+    list: (queries?: string[]) => Promise<Models.DocumentList<Information>>;
 }
 
-export type ExhibitionsCollectionn = {
-    get: (id: string) => Promise<IExhibition>;
-    list: (queries?: string[]) => Promise<Models.DocumentList<IExhibition>>;
+export type ExhibitionsCollection = {
+    get: (id: string) => Promise<Exhibition>;
+    list: (queries?: string[]) => Promise<Models.DocumentList<Exhibition>>;
+}
+
+export type WorksInformationCollection = {
+    get: (id: string) => Promise<WorksInformation>;
+    list: (queries?: string[]) => Promise<Models.DocumentList<WorksInformation>>;
 }
 
 /**
@@ -30,5 +26,6 @@ export type ExhibitionsCollectionn = {
 
 export type Database = {
     information: InformationCollection,
-    exhibitions: ExhibitionsCollectionn
+    exhibitions: ExhibitionsCollection,
+    worksInformation: WorksInformationCollection
 }

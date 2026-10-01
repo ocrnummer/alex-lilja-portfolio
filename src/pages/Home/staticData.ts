@@ -1,6 +1,6 @@
-import type { IExhibition, IInformation } from "../../types"
+import type { Exhibition, Information } from "../../types"
 
-export const staticInformation: IInformation = {
+export const staticInformation: Information = {
     title: 'Alex Lilja',
     bio: 'Self taught artist based in southern Sweden. Main medium for expression is is acrylic and charcoal.',
     email: 'hello@alexlilja.se',
@@ -12,7 +12,7 @@ export const staticInformation: IInformation = {
     $permissions: []
 }
 
-export const staticExhibitions: IExhibition[] = [
+export const staticExhibitions: Exhibition[] = [
     {
         "year": 2013,
         "name": "Vårsalong",
