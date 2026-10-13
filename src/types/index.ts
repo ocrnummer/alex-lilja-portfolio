@@ -12,6 +12,7 @@ export interface Exhibition extends Models.Document {
     venue: string,
     type: ExhibitionType,
     city: string,
+    note?: string,
 }
 
 export interface WorksInformation extends Models.Document {

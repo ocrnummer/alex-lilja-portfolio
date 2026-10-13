@@ -2,7 +2,7 @@ import type { Exhibition, Information } from "../../types"
 
 export const staticInformation: Information = {
     title: 'Alex Lilja',
-    bio: 'Self taught artist based in southern Sweden. Main medium for expression is is acrylic and charcoal.',
+    bio: 'Visual artist based in southern Sweden.',
     email: 'hello@alexlilja.se',
     $id: "",
     $collectionId: "",
@@ -148,7 +148,7 @@ export const staticExhibitions: Exhibition[] = [
         "$tableId": "exhibitions",
         "$collectionId": "exhibitions"
     },
-        {
+    {
         "year": 2024,
         "name": "Sommarsalong",
         "venue": "Galleri Kaross",
@@ -164,3 +164,27 @@ export const staticExhibitions: Exhibition[] = [
         "$collectionId": "exhibitions"
     },
 ]
+
+
+
+
+export const staticUpcomingExhibitions: Exhibition[] = [
+    {
+        "year": 2026,
+        "name": "Platanus x Hispanica",
+        "venue": "Galleri Kaross",
+        "type": "solo",
+        "city": "Växjö",
+        "note": "Opening 14/11 at Sandgärdsgatan 1",
+        "$id": "68af043c0018a7f62f51",
+        "$sequence": 1,
+        "$createdAt": "2026-10-13T08:19:28.502+00:00",
+        "$updatedAt": "2026-10-13T08:19:28.502+00:00",
+        "$permissions": [],
+        "$databaseId": "68aee827000cd72e1062",
+        "$tableId": "upcoming-exhibitions",
+        "$collectionId": "exhibitions"
+    },
+]
+
+

@@ -3,8 +3,21 @@ td {
 }
 
 .table {
-  width: 100%;
+  /* Fixed width: the centered column takes its width from these tables */
+  width: 860px;
+  max-width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Shared column widths so the upcoming and previous tables line up */
+.col-year { width: 18%; }
+.col-name { width: 33%; }
+.col-venue { width: 37%; }
+.col-type { width: 12%; }
+
+.table caption {
+  text-align: left;
 }
 
 .italic {
@@ -35,6 +48,10 @@ td {
     display: block;
   }
 
+  .table {
+    width: 100%;
+  }
+
   .table tbody tr {
     display: grid;
     grid-template-columns: 3em auto 1fr;
@@ -48,6 +65,19 @@ td {
 
   .table td {
     padding-right: 0;
+  }
+
+  .table colgroup {
+    display: none;
+  }
+
+  .table caption {
+    display: block;
+  }
+
+  .table tbody tr.note-row {
+    display: block;
+    margin-bottom: 0.25rem;
   }
 
   .table td:nth-child(1) { grid-area: year; }
