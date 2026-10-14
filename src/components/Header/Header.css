@@ -10,6 +10,7 @@
 
 .header-nav {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
 }
 
@@ -19,16 +20,124 @@
   -webkit-text-stroke: 0.3px currentColor;
 }
 
+.header-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.header-logo {
+  height: 1.8em;
+  width: auto;
+}
+
+/* opacity rather than visibility: hidden, so it still receives clicks */
+.header-logo-placeholder {
+  opacity: 0;
+}
+
+/*
+ * The header uses mix-blend-mode: difference, and as a fixed element it is its own
+ * blend group, so nothing inside it can opt out. The visible logo is drawn on top of
+ * the placeholder instead, at the same spot and size, and keeps its real colors.
+ */
+.header-logo-overlay {
+  position: fixed;
+  top: var(--page-gutter);
+  left: var(--page-gutter);
+  font-size: 28px;
+  z-index: 11;
+  /* Clicks pass through to the home link underneath */
+  pointer-events: none;
+}
+
+/*
+ * Small "Squawk" that floats up from the beak when the gull is clicked.
+ * Positioned from the logo's corner: the beak tip sits at about 89% across
+ * and 17% down the image (logo is 1.8em tall, 1.36em wide).
+ */
+.squawk {
+  /* The header font size, which the logo size is based on */
+  --logo-em: 28px;
+  position: fixed;
+  top: calc(var(--page-gutter) + var(--logo-em) * 0.31);
+  left: calc(var(--page-gutter) + var(--logo-em) * 1.21);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1;
+  white-space: nowrap;
+  color: #FFFFFF;
+  /* Same color flip as the rest of the text */
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 11;
+  animation: squawk 1.2s ease-out forwards;
+}
+
+@keyframes squawk {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  20% {
+    opacity: 1;
+  }
+  /* The path varies per squawk, set from Header.tsx */
+  50% {
+    transform: translate(var(--squawk-mid-x, 4px), var(--squawk-mid-y, -8px));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--squawk-end-x, 10px), var(--squawk-end-y, -16px)) rotate(var(--squawk-tilt, 0deg));
+  }
+}
+
 .header-tab {
+  position: relative;
   font-weight: 400;
 }
 
-.header-tab.active {
-  text-decoration: underline;
+/* Underline drawn as a bar that grows in from the left when the tab becomes active. */
+.header-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 0.07em;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.1s ease-out;
+}
+
+.header-tab.active::after {
+  transform: scaleX(1);
+}
+
+/* Fade only, no movement, for reduced motion */
+@keyframes squawk-fade {
+  0%, 100% { opacity: 0; }
+  20% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-tab::after {
+    transition: none;
+  }
+
+  .squawk {
+    animation-name: squawk-fade;
+  }
 }
 
 @media (max-width: 768px) {
-  .header {
+  .header,
+  .header-logo-overlay {
     font-size: 24px;
+  }
+
+  .squawk {
+    --logo-em: 24px;
   }
 }

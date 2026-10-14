@@ -3,7 +3,8 @@ import type { Exhibition, Information } from "../../types"
 export const staticInformation: Information = {
     title: 'Alex Lilja',
     bio: 'Visual artist based in southern Sweden.',
-    email: 'hello@alexlilja.se',
+    email: 'alexlilja.se@gmail.com',
+    instagram: 'alexlilja.se',
     $id: "",
     $collectionId: "",
     $databaseId: "",

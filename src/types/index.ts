@@ -4,6 +4,7 @@ export interface Information extends Models.Document {
     title: string,
     bio: string,
     email: string,
+    instagram: string,
 }
 
 export interface Exhibition extends Models.Document {

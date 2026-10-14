@@ -24,20 +24,6 @@ td {
   font-style: italic;
 }
 
-.bio {
-  margin: 0;
-  white-space: pre-line;
-  max-width: 600px;
-  padding-bottom: 2rem;
-}
-
-.email-link {
-  display: inline-block;
-  font-style: italic;
-  margin-bottom: 2rem;
-  overflow-wrap: anywhere;
-}
-
 @media (max-width: 768px) {
   /*
    * Each exhibition becomes a small two-line block with the year in its own column:

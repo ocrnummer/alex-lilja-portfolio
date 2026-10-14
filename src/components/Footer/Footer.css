@@ -1,0 +1,25 @@
+/* Same width and first column as the exhibition tables, so the email lines up with the exhibition names */
+.footer {
+  display: grid;
+  grid-template-columns: 18% 1fr;
+  align-items: center;
+  width: 860px;
+  max-width: 100%;
+  margin-top: 3rem;
+  font-style: italic;
+  overflow-wrap: anywhere;
+}
+
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  /* Match the mobile table's 3em year column */
+  .footer {
+    width: 100%;
+    grid-template-columns: 3em 1fr;
+    column-gap: 0.4rem;
+  }
+}

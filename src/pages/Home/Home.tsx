@@ -1,10 +1,10 @@
 import { Fragment, useEffect, useState } from "react"
 // import db from "../../services/DatabaseService"
 // import { Query } from "appwrite"
-import type { Exhibition, Information } from "../../types"
+import type { Exhibition } from "../../types"
 import "./Home.css"
 // import { insertLineBreaksAfterSentence, insertLineBreaksAfterWords } from "../../utils/InsertLinebreak"
-import { staticInformation, staticExhibitions, staticUpcomingExhibitions } from "./staticData"
+import { staticExhibitions, staticUpcomingExhibitions } from "./staticData"
 
 const ExhibitionColumns = () => (
     <colgroup>
@@ -16,7 +16,6 @@ const ExhibitionColumns = () => (
 )
 
 const Home = () => {
-    const [information, setInformation] = useState<Information | null>(null)
     const [exhibitions, setExhibitions] = useState<Exhibition[]>([])
     const [upcomingExhibitions, setUpcomingExhibitions] = useState<Exhibition[]>([])
 
@@ -41,7 +40,6 @@ const Home = () => {
         //     ...informationResponse.documents[0],
         //     bio: insertLineBreaksAfterSentence(informationResponse.documents[0].bio),
         //     title: insertLineBreaksAfterWords(informationResponse.documents[0].title)
-        setInformation(staticInformation)
         // Newest first, same as Query.orderDesc('year') above
         setExhibitions([...staticExhibitions].sort((a, b) => b.year - a.year))
         setUpcomingExhibitions([...staticUpcomingExhibitions].sort((a, b) => b.year - a.year))
@@ -49,12 +47,6 @@ const Home = () => {
 
     return (
         <> 
-            {information && (
-                <>
-                    <p className="bio">{information.bio}</p>
-                    <a className="email-link visually-hidden" href={`mailto:${information.email}`}>{information.email}</a>
-                </>
-            )}
                 <table className="table">
                 <caption><p>Upcoming Exhibitions</p></caption>
                 <ExhibitionColumns />
@@ -69,17 +61,17 @@ const Home = () => {
                 <tbody>
                 {upcomingExhibitions.map((exhibition) =>  (
                     <Fragment key={exhibition.$id}>
-                    {exhibition.note && (
-                        <tr className="note-row">
-                            <td colSpan={4}>{exhibition.note}</td>
-                        </tr>
-                    )}
                     <tr>
                         <td>{exhibition.year}</td>
                         <td className="italic">{exhibition.name}</td>
                         <td>{exhibition.venue}, {exhibition.city}</td>
                         <td>{exhibition.type}</td>
                     </tr>
+                    {exhibition.note && (
+                        <tr className="note-row italic">
+                            <td colSpan={4}>{exhibition.note}</td>
+                        </tr>
+                    )}
                     </Fragment>
                 ))}
                 </tbody>

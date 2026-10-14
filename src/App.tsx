@@ -1,5 +1,6 @@
 import TorusScene from './lib/threejs/SpinningTorus'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
 import Works from './pages/Works/Works'
 import { NAV_BASE_URL, NAV_WORKS_URL } from './utils/SharedConsts'
@@ -23,6 +24,7 @@ function App() {
               <Route path="*" element={ <Navigate to={NAV_BASE_URL} replace /> }/>
             </Routes>
           </main>
+          <Footer />
         </div>
     </BrowserRouter>
     </>
